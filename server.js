@@ -18,11 +18,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api", recommendationRoutes);
 
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGO_URI)
   .then(() => {
     app.listen(PORT, () => console.log(`Node server running on port ${PORT}`));
   })
+  .then(console.log("MongoDB Connected"))
   .catch((err) => console.error(err));
