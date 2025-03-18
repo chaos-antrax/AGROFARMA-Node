@@ -4,6 +4,7 @@ const {
   saveAlternativeSession,
   saveSoilScoreSession,
   saveProfitabilityScoreSession,
+  getUserSessions,
 } = require("../controllers/sessionController");
 
 const authenticateToken = require("../middleware/auth");
@@ -20,5 +21,7 @@ router.post(
   authenticateToken,
   saveProfitabilityScoreSession
 );
+
+router.get("/", authenticateToken, getUserSessions);
 
 module.exports = router;
